@@ -35,38 +35,32 @@ limitations under the License.
 
 > Simultaneously compute the [sine][@stdlib/math/base/special/sinf] and [cosine][@stdlib/math/base/special/cosf] of an angle measured in radians on `[-π/4, π/4]` in single-precision floating-point format.
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/math-base-special-kernel-sincosf
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
+-   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
-To use in Observable,
-
 ```javascript
-kernelSincosf = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-kernel-sincosf@umd/browser.js' )
-```
-
-To vendor stdlib functionality and avoid installing dependency trees for Node.js, you can use the UMD server build:
-
-```javascript
-var kernelSincosf = require( 'path/to/vendor/umd/math-base-special-kernel-sincosf/index.js' )
-```
-
-To include the bundle in a webpage,
-
-```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-kernel-sincosf@umd/browser.js"></script>
-```
-
-If no recognized module system is present, access bundle contents via the global scope:
-
-```html
-<script type="text/javascript">
-(function () {
-    window.kernelSincosf;
-})();
-</script>
+var kernelSincosf = require( '@stdlib/math-base-special-kernel-sincosf' );
 ```
 
 #### kernelSincosf( x )
@@ -113,15 +107,10 @@ var bool = ( sc === out );
 
 <!-- eslint no-undef: "error" -->
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/array-base-linspace@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/constants-float64-pi@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-kernel-sincosf@umd/browser.js"></script>
-<script type="text/javascript">
-(function () {
+```javascript
+var linspace = require( '@stdlib/array-base-linspace' );
+var PI = require( '@stdlib/constants-float64-pi' );
+var kernelSincosf = require( '@stdlib/math-base-special-kernel-sincosf' );
 
 var x = linspace( -PI/4.0, PI/4.0, 100 );
 
@@ -131,11 +120,6 @@ for ( i = 0; i < x.length; i++ ) {
     y = kernelSincosf( x[ i ] );
     console.log( 'kernelSincosf(%d) = [ %d, %d ]', x[ i ], y[ 0 ], y[ 1 ] );
 }
-
-})();
-</script>
-</body>
-</html>
 ```
 
 </section>
@@ -144,7 +128,93 @@ for ( i = 0; i < x.length; i++ ) {
 
 <!-- C interface documentation. -->
 
+* * *
 
+<section class="c">
+
+## C APIs
+
+<!-- Section to include introductory text. Make sure to keep an empty line after the intro `section` element and another before the `/section` close. -->
+
+<section class="intro">
+
+</section>
+
+<!-- /.intro -->
+
+<!-- C usage documentation. -->
+
+<section class="usage">
+
+### Usage
+
+```c
+#include "stdlib/math/base/special/kernel_sincosf.h"
+```
+
+#### stdlib_base_kernel_sincosf( x, &sine, &cosine )
+
+Simultaneously computes the [sine][@stdlib/math/base/special/sinf] and [cosine][@stdlib/math/base/special/cosf] of an angle measured in radians on `[-π/4, π/4]` in single-precision floating-point format.
+
+```c
+float cosine;
+float sine;
+
+stdlib_base_kernel_sincosf( 0.0, &sine, &cosine );
+```
+
+The function accepts the following arguments:
+
+-   **x**: `[in] double` input value (in radians, assumed to be bounded by `~pi/4` in magnitude).
+-   **sine**: `[out] float*` destination for the sine.
+-   **cosine**: `[out] float*` destination for the cosine.
+
+```c
+void stdlib_base_kernel_sincosf( const double x, float* sine, float* cosine );
+```
+
+</section>
+
+<!-- /.usage -->
+
+<!-- C API usage notes. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
+
+<section class="notes">
+
+</section>
+
+<!-- /.notes -->
+
+<!-- C API usage examples. -->
+
+<section class="examples">
+
+### Examples
+
+```c
+#include "stdlib/math/base/special/kernel_sincosf.h"
+#include <stdio.h>
+
+int main( void ) {
+    const double x[] = { -0.7853981633974483, -0.6108652381980153, -0.4363323129985824, -0.26179938779914946, -0.08726646259971649, 0.08726646259971649, 0.26179938779914935, 0.43633231299858233, 0.6108652381980153, 0.7853981633974483 };
+
+    float cosine;
+    float sine;
+    int i;
+    for ( i = 0; i < 10; i++ ) {
+        stdlib_base_kernel_sincosf( x[ i ], &sine, &cosine );
+        printf( "kernelSincosf(%lf) = [ %f, %f ]\n", x[ i ], sine, cosine );
+    }
+}
+```
+
+</section>
+
+<!-- /.examples -->
+
+</section>
+
+<!-- /.c -->
 
 <!-- Section for related `stdlib` packages. Do not manually edit this section, as it is automatically populated. -->
 
@@ -188,8 +258,8 @@ Copyright &copy; 2016-2026. The Stdlib [Authors][stdlib-authors].
 [npm-image]: http://img.shields.io/npm/v/@stdlib/math-base-special-kernel-sincosf.svg
 [npm-url]: https://npmjs.org/package/@stdlib/math-base-special-kernel-sincosf
 
-[test-image]: https://github.com/stdlib-js/math-base-special-kernel-sincosf/actions/workflows/test.yml/badge.svg?branch=v0.1.0
-[test-url]: https://github.com/stdlib-js/math-base-special-kernel-sincosf/actions/workflows/test.yml?query=branch:v0.1.0
+[test-image]: https://github.com/stdlib-js/math-base-special-kernel-sincosf/actions/workflows/test.yml/badge.svg?branch=v0.1.1
+[test-url]: https://github.com/stdlib-js/math-base-special-kernel-sincosf/actions/workflows/test.yml?query=branch:v0.1.1
 
 [coverage-image]: https://img.shields.io/codecov/c/github/stdlib-js/math-base-special-kernel-sincosf/main.svg
 [coverage-url]: https://codecov.io/github/stdlib-js/math-base-special-kernel-sincosf?branch=main
@@ -219,9 +289,9 @@ Copyright &copy; 2016-2026. The Stdlib [Authors][stdlib-authors].
 [esm-readme]: https://github.com/stdlib-js/math-base-special-kernel-sincosf/blob/esm/README.md
 [branches-url]: https://github.com/stdlib-js/math-base-special-kernel-sincosf/blob/main/branches.md
 
-[@stdlib/math/base/special/cosf]: https://github.com/stdlib-js/math-base-special-cosf/tree/umd
+[@stdlib/math/base/special/cosf]: https://github.com/stdlib-js/math-base-special-cosf
 
-[@stdlib/math/base/special/sinf]: https://github.com/stdlib-js/math-base-special-sinf/tree/umd
+[@stdlib/math/base/special/sinf]: https://github.com/stdlib-js/math-base-special-sinf
 
 <!-- <related-links> -->
 
