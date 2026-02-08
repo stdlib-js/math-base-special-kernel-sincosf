@@ -42,13 +42,13 @@ limitations under the License.
 ## Usage
 
 ```javascript
-import kernelSincosf from 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-kernel-sincosf@esm/index.mjs';
+import kernelSincosf from 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-kernel-sincosf@v0.1.1-esm/index.mjs';
 ```
 
 You can also import the following named exports from the package:
 
 ```javascript
-import { assign } from 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-kernel-sincosf@esm/index.mjs';
+import { assign } from 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-kernel-sincosf@v0.1.1-esm/index.mjs';
 ```
 
 #### kernelSincosf( x )
@@ -103,7 +103,7 @@ var bool = ( sc === out );
 
 import linspace from 'https://cdn.jsdelivr.net/gh/stdlib-js/array-base-linspace@esm/index.mjs';
 import PI from 'https://cdn.jsdelivr.net/gh/stdlib-js/constants-float64-pi@esm/index.mjs';
-import kernelSincosf from 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-kernel-sincosf@esm/index.mjs';
+import kernelSincosf from 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-kernel-sincosf@v0.1.1-esm/index.mjs';
 
 var x = linspace( -PI/4.0, PI/4.0, 100 );
 
