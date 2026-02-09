@@ -1,0 +1,4 @@
+// Copyright (c) 2026 The Stdlib Authors. License is Apache-2.0: http://www.apache.org/licenses/LICENSE-2.0
+/// <reference types="./index.d.ts" />
+import n from"https://cdn.jsdelivr.net/gh/stdlib-js/utils-define-nonenumerable-read-only-property@v0.2.3-esm/index.mjs";import t from"https://cdn.jsdelivr.net/gh/stdlib-js/number-float64-base-to-float32@v0.2.3-esm/index.mjs";var e=-.499999997251031,r=.04166662332373906;function s(n,s,i,o){var u,a,d,f;return d=(f=n*n)*f,u=function(n){return 0===n?-.00019839334836096632:2718311493989822e-21*n-.00019839334836096632}(f),a=f*n,s[o]=t(n+a*function(n){return 0===n?-.16666666641626524:.008333329385889463*n-.16666666641626524}(f)+a*d*u),u=function(n){return 0===n?-.001388676377460993:2439044879627741e-20*n-.001388676377460993}(f),s[o+i]=t(1+f*e+d*r+d*f*u),s}function i(n){return s(n,[0,0],1,0)}n(i,"assign",s);export{s as assign,i as default};
+//# sourceMappingURL=index.mjs.map
